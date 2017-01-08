@@ -10,7 +10,7 @@ module.exports = () => {
         if (!p.then || !p.catch || !p.done) {
           console.error(
             'Expected then handler for route %s to be async',
-            req.url,
+            req.url
           );
         }
 
