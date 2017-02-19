@@ -4,8 +4,8 @@ module.exports = () => {
   const router = new Router();
 
   function createHandler(method) {
-    return function handler(path, fun) {
-      return router[method](path, (req, res, next) => {
+    return function handler(path, ...rest) {
+      const asyncRest = rest.map(fun => (req, res, next) => {
         const p = fun(req, res, next);
         if (!p.then || !p.catch || !p.done) {
           console.error(
@@ -16,6 +16,8 @@ module.exports = () => {
 
         p.catch(next).done();
       });
+
+      return router[method](path, ...asyncRest);
     };
   }
 
