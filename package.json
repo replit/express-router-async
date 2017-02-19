@@ -1,6 +1,6 @@
 {
   "name": "express-router-async",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Creates an express router augmented with promise handling routes",
   "main": "index.js",
   "scripts": {
