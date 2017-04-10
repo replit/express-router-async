@@ -7,14 +7,17 @@ module.exports = () => {
     return function handler(path, ...rest) {
       const asyncRest = rest.map(fun => (req, res, next) => {
         const p = fun(req, res, next);
-        if (!p.then || !p.catch || !p.done) {
+        if (!p.then || !p.catch) {
           console.error(
             'Expected then handler for route %s to be async',
             req.url
           );
         }
 
-        p.catch(next).done();
+        p.catch(next);
+        if (p.done) {
+          p.done();
+        }
       });
 
       return router[method](path, ...asyncRest);
