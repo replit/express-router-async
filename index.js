@@ -1,7 +1,7 @@
 const Router = require('express').Router;
 
-module.exports = () => {
-  const router = new Router();
+module.exports = (options) => {
+  const router = new Router(options);
 
   function createHandler(method) {
     return function handler(path, ...rest) {
