@@ -14,9 +14,9 @@ module.exports = (options) => {
           );
         }
 
-        p.catch(next);
-        if (p.done) {
-          p.done();
+        const pp = p.catch(next);
+        if (pp.done) {
+          pp.done();
         }
       });
 
