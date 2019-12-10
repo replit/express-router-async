@@ -7,3 +7,4 @@ router.getAsync(async (req, res) => {
   res.json(wow);
 });
 ```
+[![Run on Repl.it](https://repl.it/badge/github/replit/express-router-async)](https://repl.it/github/replit/express-router-async)
