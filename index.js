@@ -9,7 +9,7 @@ const Router = require('express').Router;
  */
 function getFunctionName(fun, handlerPath, middlewareIndex) {
   if (fun.name) {
-    return fun.name + 'Async'
+    return fun.name + 'Async';
   }
 
   // Path can be a string, regex, or array of either
@@ -37,11 +37,14 @@ function createNamedAsyncMiddleware(fun, handlerPath, middlewareIndex) {
       const p = fun(req, res, next);
 
       // If the result isn't a promise
-      if (!p.then || !p.catch) {
+      if (!p || typeof p !== 'object' || !p.then || !p.catch) {
         console.error(
-          'Expected then handler for route %s to be async',
+          'Expected then middleware number %d for route %s to return a promise',
+          i,
           req.url,
         );
+
+        return;
       }
 
       // catch the error and pass it to the next error handling middleware
