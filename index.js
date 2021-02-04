@@ -8,7 +8,7 @@ const Router = require('express').Router;
  * middleware.
  */
 function getFunctionName(fun, handlerPath, middlewareIndex) {
-  if (fun.name) {
+  if (fun.name && fun.name !== 'anonymous') {
     return fun.name + 'Async';
   }
 
