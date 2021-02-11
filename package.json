@@ -1,5 +1,5 @@
 {
-  "name": "express-router-async",
+  "name": "@replit/express-router-async",
   "version": "0.4.0",
   "description": "Creates an express router augmented with promise handling routes",
   "main": "index.js",
